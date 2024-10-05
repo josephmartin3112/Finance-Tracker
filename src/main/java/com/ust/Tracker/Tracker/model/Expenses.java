@@ -19,9 +19,11 @@ public class Expenses {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-    private String typetranscations;
+    private String typetransactions;
     private double amount;
     private String description;
+
+
     @CreationTimestamp
     @Column(updatable = false)
     private Date createDate;

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -32,5 +33,10 @@ public class ExpenseController {
     @GetMapping("/getexpenses/{id}")
     public ResponseEntity<Expenses> getExpense(@PathVariable UUID id) throws ExpenseNotFoundException {
         return ResponseEntity.ok(expenseService.getExpense(id));
+    }
+    @GetMapping("/month/{month}/{year}")
+    public ResponseEntity<Map<String,Double>> getTotalsForMonth(@PathVariable int month,@PathVariable int year){
+        Map<String,Double> totals=expenseService.getTotalsForMonth(month,year);
+        return ResponseEntity.ok(totals);
     }
 }
