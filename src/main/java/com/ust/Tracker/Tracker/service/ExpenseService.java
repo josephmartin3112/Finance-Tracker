@@ -7,6 +7,7 @@ import com.ust.Tracker.Tracker.repo.ExpensesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,6 +24,10 @@ public class ExpenseService {
         return expensesrepo.save(expense);
     }
 
+    public List<Expenses> getAllExpenses() {
+        List<Expenses> expenses=expensesrepo.findAll();
+        return expenses;
+    }
 
     public Expenses getExpense(UUID id) throws ExpenseNotFoundException {
         Expenses expense=expensesrepo.findById(id)

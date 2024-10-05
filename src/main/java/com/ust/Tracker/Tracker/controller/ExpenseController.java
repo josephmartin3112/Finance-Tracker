@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -18,6 +19,11 @@ import java.util.UUID;
 public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
+
+    @GetMapping
+    public ResponseEntity <List<Expenses>> getAllExpenses(){
+        return ResponseEntity.ok(expenseService.getAllExpenses());
+    }
 
     @PostMapping("/addexpenses")
     public ResponseEntity<Expenses> addExpense(@RequestBody @Valid Expensesdto dto){
